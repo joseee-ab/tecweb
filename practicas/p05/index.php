@@ -87,8 +87,16 @@
             print_r($GLOBALS['z']);
         
         echo '<h2>Ejercicio 5</h2>';
-        echo '<p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
-        la matriz $GLOBALS o del modificador global de PHP.</p>';    
+        echo '<p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>'; 
+        unset($a, $b, $c);  
+        $a = "7 personas";
+        $b = (integer) $a;
+        $a = "9E3";
+        $c = (double) $a; 
+
+        echo "a: $a<br>";
+        echo "b: $b<br>";
+        echo "c: $c<br>";
     ?>
 </body>
 </html>
