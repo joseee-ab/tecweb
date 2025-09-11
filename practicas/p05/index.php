@@ -132,6 +132,13 @@
         en uno que se pueda mostrar con un echo:</p>';
         echo "c = " . var_export($c, true) . "<br>";
         echo "e = " . var_export($e, true) . "<br>";
+
+        echo '<h2>Ejercicio 7</h2>';
+        echo '<p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>';
+        echo '<ul>';
+        echo '<li> a. La versión de Apache y PHP'.phpversion().$_SERVER['SERVER_SOFTWARE']."<br>";
+        echo '<li> b. El nombre del sistema operativo (servidor)'.PHP_OS."<br>";
+        echo '<li> c. El idioma del navegador (cliente)'. $_SERVER['HTTP_ACCEPT_LANGUAGE'];
     ?>
 </body>
 </html>
