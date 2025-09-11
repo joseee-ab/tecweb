@@ -29,29 +29,66 @@
         echo '<li>$_element1 es válida porque inicia con guión bajo.</li>';
         echo '<li>$house*5 es inválida porque el símbolo * no está permitido.</li>';
         echo '</ul>';
-    ?>
-    <h2>Ejercicio 2</h2>
-    <p>Proporcionar los valores de $a, $b, $c como sigue:</p>
-    <?php   
-        echo '<p>Inciso a:</p>'; 
-        $a = "ManejadorSQL";
-        $b = 'MySQL';
-        $c = &$a;
-        echo '<ul>';
-            echo '<li>$a= '."$a";
-            echo '<li>$b= '."$b";
-            echo '<li>$c= '."$c";   
-        echo '</ul>';
-        echo '<p>Inciso b:</p>'; 
-        $a = "PHP server";
-        $b = &$a;
-        echo '<ul>';
-            echo '<li>$a= '."$a";
-            echo '<li>$b= '."$b";
-            echo '<li>$c= '."$c";   
-        echo '</ul>';
-    ?>
 
+        echo '<h2>Ejercicio 2</h2>';
+        echo '<p>Proporcionar los valores de $a, $b, $c como sigue:</p>'; 
+            echo '<p>Inciso a:</p>'; 
+            $a = "ManejadorSQL";
+            $b = 'MySQL';
+            $c = &$a;
+            echo '<ul>';
+                echo '<li>$a = '."$a";
+                echo '<li>$b = '."$b";
+                echo '<li>$c = '."$c";   
+            echo '</ul>';
+            echo '<p>Inciso b:</p>'; 
+            $a = "PHP server";
+            $b = &$a;
+            echo '<ul>';
+                echo '<li>$a = '."$a";
+                echo '<li>$b = '."$b";
+                echo '<li>$c = '."$c";   
+            echo '</ul>';
 
+        echo '<h2>Ejercicio 3</h2>';
+        echo '<p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
+        verificar la evolución del tipo de estas variables (imprime todos los componentes de los
+        arreglo):</p>';
+            $a = "PHP5";
+            echo "\$a = $a <br>";
+            $z[] = &$a;
+            echo '$z = ';
+            var_dump($z);
+            echo "<br>";
+            $b = "5a version de PHP";
+            echo "\$b = $b <br>";
+            $c = (int)$b*10;
+            echo "\$c = $c <br>";
+            $a .= $b;
+            echo "\$a = $a <br>";
+            $b *= $c;
+            echo "\$b = $b <br>";
+            $z[0] = "MySQL";
+            echo '$z = ';
+            var_dump($z);
+
+        echo '<h2>Ejercicio 4</h2>';
+        echo '<p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
+        la matriz $GLOBALS o del modificador global de PHP.</p>';
+            echo "a: ".$GLOBALS['a']."<br>";
+            echo "z: "; 
+            print_r($GLOBALS['z']);
+            echo "<br>";
+            echo "b: ".$GLOBALS['b']."<br>";
+            echo "c: ".$GLOBALS['c']."<br>";
+            echo "a: ".$GLOBALS['a']."<br>";
+            echo "b: ".$GLOBALS['b']."<br>";
+            echo "z: "; 
+            print_r($GLOBALS['z']);
+        
+        echo '<h2>Ejercicio 5</h2>';
+        echo '<p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
+        la matriz $GLOBALS o del modificador global de PHP.</p>';    
+    ?>
 </body>
 </html>
