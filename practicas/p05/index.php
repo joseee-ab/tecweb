@@ -55,19 +55,19 @@
         verificar la evolución del tipo de estas variables (imprime todos los componentes de los
         arreglo):</p>';
             $a = "PHP5";
-            echo "\$a = $a <br>";
+            echo "\$a = $a <br/>";
             $z[] = &$a;
             echo '$z = ';
             var_dump($z);
-            echo "<br>";
+            echo "<br/>";
             $b = "5a version de PHP";
-            echo "\$b = $b <br>";
+            echo "\$b = $b <br/>";
             $c = (int)$b*10;
-            echo "\$c = $c <br>";
+            echo "\$c = $c <br/>";
             $a .= $b;
-            echo "\$a = $a <br>";
+            echo "\$a = $a <br/>";
             $b *= $c;
-            echo "\$b = $b <br>";
+            echo "\$b = $b <br/>";
             $z[0] = "MySQL";
             echo '$z = ';
             var_dump($z);
@@ -79,10 +79,10 @@
             echo "z: "; 
             print_r($GLOBALS['z']);
             echo "<br>";
-            echo "b: ".$GLOBALS['b']."<br>";
-            echo "c: ".$GLOBALS['c']."<br>";
-            echo "a: ".$GLOBALS['a']."<br>";
-            echo "b: ".$GLOBALS['b']."<br>";
+            echo "b: ".$GLOBALS['b']."<br/>";
+            echo "c: ".$GLOBALS['c']."<br/>";
+            echo "a: ".$GLOBALS['a']."<br/>";
+            echo "b: ".$GLOBALS['b']."<br/>";
             echo "z: "; 
             print_r($GLOBALS['z']);
         
@@ -94,9 +94,9 @@
         $a = "9E3";
         $c = (double) $a; 
 
-        echo "a: $a<br>";
-        echo "b: $b<br>";
-        echo "c: $c<br>";
+        echo "a: $a<br/>";
+        echo "b: $b<br/>";
+        echo "c: $c<br/>";
         
         echo '<h2>Ejercicio 6</h2>';
         echo '<p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
@@ -111,34 +111,34 @@
         $f = ($a XOR $b);
         echo '$a = ';
         var_dump($a);
-        echo "<br>";
+        echo "<br/>";
         echo '$b = ';
         var_dump($b);
-        echo "<br>";
+        echo "<br/>";
         echo '$c = ';
         var_dump($c);
-        echo "<br>";
+        echo "<br/>";
         echo '$d = ';
         var_dump($d);
-        echo "<br>";
+        echo "<br/>";
         echo '$e = ';
         var_dump($e);
-        echo "<br>";
+        echo "<br/>";
         echo '$f = ';
         var_dump($f);
-        echo "<br>";
+        echo "<br/>";
 
         echo '<p>Después investiga una función de PHP que permita transformar el valor booleano de $c y $e
         en uno que se pueda mostrar con un echo:</p>';
-        echo "c = " . var_export($c, true) . "<br>";
-        echo "e = " . var_export($e, true) . "<br>";
+        echo "c = " . var_export($c, true) . "<br/>";
+        echo "e = " . var_export($e, true) . "<br/>";
 
         echo '<h2>Ejercicio 7</h2>';
         echo '<p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>';
         echo '<ul>';
-        echo '<li> a. La versión de Apache y PHP'.phpversion().$_SERVER['SERVER_SOFTWARE']."<br>";
-        echo '<li> b. El nombre del sistema operativo (servidor)'.PHP_OS."<br>";
-        echo '<li> c. El idioma del navegador (cliente)'. $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        echo '<li> a. La versión de Apache y PHP'.phpversion().$_SERVER['SERVER_SOFTWARE']."</li>";
+        echo '<li> b. El nombre del sistema operativo (servidor)'.PHP_OS."</li>";
+        echo '<li> c. El idioma del navegador (cliente)'. $_SERVER['HTTP_ACCEPT_LANGUAGE']."</li>";
     ?>
 </body>
 </html>
