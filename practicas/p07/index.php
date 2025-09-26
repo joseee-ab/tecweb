@@ -36,7 +36,26 @@
         echo "</pre>";
 
         echo "<p>{$resultado['totalNumeros']} números obtenidos en {$resultado['iteraciones']} iteraciones</p>";
+    ?>
 
+    <h2>Ejercicio 3</h2>
+    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.</p>
+
+    <?php
+        if(isset($_GET['numero'])) {
+            $numero = intval($_GET['numero']);
+
+            $resultado1 = ejercicio3W($numero);
+            echo "<p>While</p>";
+            echo "<p>Primer número múltiplo de $numero encontrado: $resultado1 </p>";
+
+            $resultado2 = ejercicio3DW($numero);
+            
+            echo "<p>Do-While</p>";
+            echo "<p>Primer número múltiplo de $numero encontrado: $resultado2 </p>";
+
+        }
     ?>
 
     <h2>Ejemplo de POST</h2>

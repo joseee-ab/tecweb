@@ -29,4 +29,23 @@
         ];
     }
 
+    function ejercicio3W($num) {
+        $encontrado = false;
+        unset($numAle);
+        while (!$encontrado) {
+            $numAle = rand(1, 999);
+            if ($numAle % $num == 0) {
+                $encontrado = true;
+            }
+        }
+        return $numAle;
+    }
 
+    function ejercicio3DW($num) {
+        unset($numAle);
+        do {
+            $numAle = rand(1, 999);
+        } while ($numAle % $num != 0);
+
+        return $numAle;
+    }
