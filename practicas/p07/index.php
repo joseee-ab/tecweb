@@ -28,12 +28,16 @@
 
     <?php
         $resultado = ejercicio2();
-        echo "<pre>";
-        echo "<p>Impar\tPar\tImpar</p>";
+        echo "<table border='1' cellpadding='5'>";
+        echo "<tr><th>Impar</th><th>Par</th><th>Impar</th></tr>";
         foreach ($resultado['matriz'] as $fila) {
-            echo implode("\t", $fila) . "\n";
+            echo "<tr>";
+            foreach ($fila as $num) {
+                echo "<td>$num</td>";
+            }
+            echo "</tr>";
         }
-        echo "</pre>";
+        echo "</table>";
 
         echo "<p>{$resultado['totalNumeros']} números obtenidos en {$resultado['iteraciones']} iteraciones</p>";
     ?>
@@ -56,6 +60,26 @@
             echo "<p>Primer número múltiplo de $numero encontrado: $resultado2 </p>";
 
         }
+    ?>
+
+    <h2>Ejercicio 4</h2>
+    <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’
+    a la ‘z’.</p>
+
+    <?php
+        $arreglo = ejercicio4();
+
+        echo "<table border='1' cellpadding='5'>";
+        echo "<tr><th>Índice</th><th>Letra</th></tr>";
+
+        foreach ($arreglo as $key => $value) {
+            echo "<tr>";
+            echo "<td>$key</td>";
+            echo "<td>$value</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
     ?>
 
     <h2>Ejemplo de POST</h2>
