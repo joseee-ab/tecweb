@@ -14,12 +14,33 @@
     <?php
         if(isset($_GET['numero'])) {
             $num = $_GET['numero'];
-            echo "<h3>R= " . esMultiploDe5y7($num) . "</h3>";
+            if (ejercicio1($num)) {
+                echo "<p>R= El número $num <br>SÍ es múltiplo de 5 y 7.</p>";
+            } else {
+                echo "<p>R= El número $num <br>NO es múltiplo de 5 y 7.</p>";
+            }
         }
     ?>
 
+    <h2>Ejercicio 2</h2>
+    <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una
+    secuencia compuesta por impar, par, impar</p>
+
+    <?php
+        $resultado = ejercicio2();
+        echo "<pre>";
+        echo "<p>Impar\tPar\tImpar</p>";
+        foreach ($resultado['matriz'] as $fila) {
+            echo implode("\t", $fila) . "\n";
+        }
+        echo "</pre>";
+
+        echo "<p>{$resultado['totalNumeros']} números obtenidos en {$resultado['iteraciones']} iteraciones</p>";
+
+    ?>
+
     <h2>Ejemplo de POST</h2>
-    <form action="http://localhost/tecweb/practicas/p05/index.php" method="post">
+    <form action="http://localhost/tecweb/practicas/p07/index.php" method="post">
         Name: <input type="text" name="name"><br>
         E-mail: <input type="text" name="email"><br>
         <input type="submit">
