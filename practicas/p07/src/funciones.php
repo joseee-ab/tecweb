@@ -58,3 +58,12 @@
         return $arreglo;
     }
 
+    function ejercicio5($edad, $sexo) {
+        if ($sexo === "femenino" && $edad >= 18 && $edad <= 35) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+

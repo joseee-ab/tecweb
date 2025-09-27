@@ -13,11 +13,11 @@
     <p>Escribir programa para comprobar si un número es un múltiplo de 5 y 7</p>
     <?php
         if(isset($_GET['numero'])) {
-            $num = $_GET['numero'];
+            $res = $_GET['numero'];
             if (ejercicio1($num)) {
-                echo "<p>R= El número $num <br>SÍ es múltiplo de 5 y 7.</p>";
+                echo "<p>R= El número $res <br>SÍ es múltiplo de 5 y 7.</p>";
             } else {
-                echo "<p>R= El número $num <br>NO es múltiplo de 5 y 7.</p>";
+                echo "<p>R= El número $res <br>NO es múltiplo de 5 y 7.</p>";
             }
         }
     ?>
@@ -83,19 +83,38 @@
     ?>
 
     <h2>Ejemplo de POST</h2>
+    <h2>Ejercicio 5</h2>
+    <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de
+    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
+    bienvenida apropiado.</p>
     <form action="http://localhost/tecweb/practicas/p07/index.php" method="post">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
+        Edad: <input type="number" name="edad" min = "0" require><br>
+        Sexo: 
+        <select name="sexo" required>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+        </select><br>
+        <input type="submit" value="Verificar">
     </form>
     <br>
     <?php
-        if(isset($_POST["name"]) && isset($_POST["email"]))
-        {
-            echo $_POST["name"];
-            echo '<br>';
-            echo $_POST["email"];
+        session_start();
+
+        if(isset($_POST['edad']) && isset($_POST['sexo'])) {
+            $edad = intval($_POST['edad']);
+            $sexo = $_POST['sexo'];
+
+            if (ejercicio5($edad, $sexo)) {
+                $_SESSION['mensaje'] = "true";
+            } else {
+                $_SESSION['mensaje'] = "false";
+            }
+
+            header("Location: respuestas/respuesta5.php");
+            exit();
         }
     ?>
+
+    
 </body>
 </html>
