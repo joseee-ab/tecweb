@@ -87,34 +87,24 @@
     <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de
     sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
     bienvenida apropiado.</p>
-    <form action="http://localhost/tecweb/practicas/p07/index.php" method="post">
-        Edad: <input type="number" name="edad" min = "0" require><br>
+    <form action="http://localhost/tecweb/practicas/p07/respuestas/respuesta5.php" method="post">       
+        Edad: <input type="text" name="edad"><br>
         Sexo: 
-        <select name="sexo" required>
+        <select name="sexo">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
-        </select><br>
-        <input type="submit" value="Verificar">
+        </select>
+        <br>
+        <input type="submit">
     </form>
-    <br>
-    <?php
-        session_start();
 
-        if(isset($_POST['edad']) && isset($_POST['sexo'])) {
-            $edad = intval($_POST['edad']);
-            $sexo = $_POST['sexo'];
+    <h2>Ejercicio 6</h2>
 
-            if (ejercicio5($edad, $sexo)) {
-                $_SESSION['mensaje'] = "true";
-            } else {
-                $_SESSION['mensaje'] = "false";
-            }
+    <form action="http://localhost/tecweb/practicas/p07/respuestas/respuesta6.php" method="post">
+        Matrícula: <input type="text" name="matricula"><br><br>
+        <input type="submit" name="accion" value="Buscar Matrícula">
+        <input type="submit" name="accion" value="Mostrar Todos">
+    </form>
 
-            header("Location: respuestas/respuesta5.php");
-            exit();
-        }
-    ?>
-
-    
 </body>
 </html>
