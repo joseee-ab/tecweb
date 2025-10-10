@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+
+  <head>
+    <meta charset="utf-8" >
+    <title>Registro De Productos</title>
+    <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Registro De Nuevos Productos</h1>
+
+    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p09/set_productov2.php" method="post">
+
+      <fieldset>
+        <legend>Información del Producto</legend>
+        <ul>
+          <li>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
+          </li>
+
+          <li>
+            <label for="marca">Marca:</label>
+            <input type="text" name="marca" id="marca" required>
+          </li>
+
+          <li>
+            <label for="modelo">Modelo:</label>
+            <input type="text" name="modelo" id="modelo" required>
+          </li>
+
+          <li>
+            <label for="precio">Precio:</label>
+            <input type="number" name="precio" id="precio" step="0.01" min="0" required>
+          </li>
+
+          <li>
+            <label for="detalles">Detalles:</label><br>
+            <textarea name="detalles" id="detalles" rows="3" cols="100" required></textarea>
+          </li>
+
+          <li>
+            <label for="unidades">Unidades:</label>
+            <input type="number" name="unidades" id="unidades" min="0" required>
+          </li>
+
+          <li>
+            <label for="imagen">Imagen:</label>
+            <input type="text" name="imagen" id="imagen" required>
+          </li>
+        </ul>
+      </fieldset>
+
+      <p>
+        <input type="submit" value="Enviar">
+        <input type="reset">
+      </p>
+
+    </form>
+  </body>
+</html>
