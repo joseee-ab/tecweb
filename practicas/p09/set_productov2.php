@@ -10,7 +10,7 @@
         /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
     }
 
-    // Obtener datos del formulario
+    /**Obtener datos del formulario*/
     $nombre = $_POST['nombre'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
@@ -19,7 +19,10 @@
     $unidades = $_POST['unidades'];
     $imagen = $_POST['imagen'];
 
-    // Validar si el producto ya existe
+    /**Agregamos variable para la columna de eliminado asignandole 0 */
+    //$eliminado = 0;
+
+    /**Validar si el producto ya existe*/
     $sql_check = "SELECT * FROM productos WHERE nombre = '$nombre' AND marca = '$marca' AND modelo = '$modelo'";
 
     $result = $link->query($sql_check);
@@ -30,7 +33,9 @@
         echo "<p>Ya hay un producto registrado con el mismo nombre, marca y modelo.</p>";
     } else {
         /** Crear una tabla que no devuelve un conjunto de resultados */
-        $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
+        //$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', {$eliminado})";
+        $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+            VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
         if ( $link->query($sql) ) 
         {
             echo '<h3>Producto Insertado Exitosamente</h3>';
