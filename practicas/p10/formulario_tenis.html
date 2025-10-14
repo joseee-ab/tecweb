@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro Tenis Deportivos</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registro de Articulos Deportivos</h1>
+
+  <form id="formulario" action="http://localhost/tecweb/practicas/p09/set_productov2.php" method="post">
+    <fieldset>
+      <legend>Información del Producto</legend>
+      <ul id="entradas">
+        <li>
+          <label>Nombre:</label>
+          <input type="text" name="nombre">
+          <span class="error"></span>
+        </li>
+
+        <li>
+          <label>Marca:</label>
+          <div class="marca-options">
+            <label><input type="radio" name="marca" value="Nike"> Nike</label><br>
+            <label><input type="radio" name="marca" value="Adidas"> Adidas</label><br>
+            <label><input type="radio" name="marca" value="Puma"> Puma</label><br>
+            <label><input type="radio" name="marca" value="Reebok"> Reebok</label><br>
+            <label><input type="radio" name="marca" value="New Balance"> New Balance</label><br>
+            <label><input type="radio" name="marca" value="Asics"> Asics</label>
+          </div>
+          <span class="error"></span>
+        </li>
+
+        <li>
+          <label>Modelo:</label>
+          <input type="text" name="modelo">
+          <span class="error"></span>
+        </li>
+
+        <li>
+          <label>Precio:</label>
+          <input type="number" name="precio" step="0.01" min="0">
+          <span class="error"></span>
+        </li>
+
+        <li>
+          <label>Detalles:</label><br>
+          <textarea name="detalles" rows="3" cols="100"></textarea>
+          <br><span class="error"></span>
+        </li>
+
+        <li>
+          <label>Unidades:</label>
+          <input type="number" name="unidades" min="0">
+          <span class="error"></span>
+        </li>
+
+        <li>
+          <label>Imagen:</label>
+          <input type="text" name="imagen" placeholder="Ej. img/imagen.png">
+          <span class="error"></span>
+        </li>
+      </ul>
+    </fieldset>
+
+    <p style="text-align:center;">
+      <input type="submit" value="Enviar">
+      <input type="reset" value="Limpiar">
+    </p>
+  </form>
+
+  <script src="./validaciones.js"></script>
+</body>
+</html>
