@@ -6,7 +6,7 @@ var baseJSON = {
     "marca": "NA",
     "detalles": "NA",
     "imagen": "img/default.png"
-  };
+};
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
 function buscarID(e) {
@@ -112,6 +112,113 @@ function buscarNombre(e) {
     client.send("nombre=" + encodeURIComponent(nombre));
 }
 
+// FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
+function agregarProducto(e) {
+    e.preventDefault();
+
+    // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+    var productoJsonString = document.getElementById('description').value;
+    var nombre = document.getElementById('name').value.trim();
+
+    // VALIDAR QUE EL NOMBRE NO ESTÉ VACÍO
+    if (nombre === "") {
+        alert("El nombre del producto es requerido");
+        return;
+    }
+
+    // VALIDAR QUE EL JSON NO ESTÉ VACÍO
+    if (productoJsonString.trim() === "") {
+        alert("La descripción del producto es requerida");
+        return;
+    }
+
+    // SE CONVIERTE EL JSON DE STRING A OBJETO
+    var finalJSON;
+    try {
+        finalJSON = JSON.parse(productoJsonString);
+    } catch (error) {
+        alert("El formato JSON no es válido");
+        return;
+    }
+
+    // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
+    finalJSON['nombre'] = nombre;
+
+    // VALIDACIONES
+
+    if (finalJSON.nombre.length > 100) {
+        alert("El nombre no debe exceder los 100 caracteres");
+        return;
+    }
+
+    if (!finalJSON.marca || finalJSON.marca.trim() === "" || finalJSON.marca.trim() === "NA") {
+        alert("La marca es requerida y debe ser válida");
+        return;
+    }
+
+    var modeloRegex = /^[A-Za-z0-9]+$/;
+    if (!finalJSON.modelo || finalJSON.modelo.trim() === "") {
+        alert("El modelo es requerido");
+        return;
+    }
+    if (!modeloRegex.test(finalJSON.modelo)) {
+        alert("El modelo debe contener solo letras y números (sin espacios ni caracteres especiales)");
+        return;
+    }
+    if (finalJSON.modelo.length > 25) {
+        alert("El modelo no debe exceder los 25 caracteres");
+        return;
+    }
+
+    var precio = parseFloat(finalJSON.precio);
+    if (isNaN(precio) || precio <= 99.99) {
+        alert("El precio debe ser un número mayor a 99.99");
+        return;
+    }
+    finalJSON.precio = precio;
+
+    if (finalJSON.detalles) {
+        if (finalJSON.detalles.length > 250) {
+            alert("Los detalles no deben exceder los 250 caracteres");
+            return;
+        }
+    } else {
+        finalJSON.detalles = "NA";
+    }
+
+    var unidades = parseInt(finalJSON.unidades);
+    if (isNaN(unidades) || unidades < 0) {
+        alert("Las unidades deben ser un número igual o mayor a 0");
+        return;
+    }
+    finalJSON.unidades = unidades;
+
+    if (!finalJSON.imagen || finalJSON.imagen.trim() === "" || finalJSON.imagen.trim() === "NA") {
+        finalJSON.imagen = "img/default.png";
+    }
+
+    // SE OBTIENE EL STRING DEL JSON FINAL
+    productoJsonString = JSON.stringify(finalJSON, null, 2);
+
+    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+    var client = getXMLHttpRequest();
+    client.open('POST', './backend/create.php', true);
+    client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+    client.onreadystatechange = function () {
+        if (client.readyState == 4 && client.status == 200) {
+            console.log(client.responseText);
+            
+            alert(client.responseText);
+            
+            if (client.responseText.includes("exitosamente")) {
+                document.getElementById('name').value = "";
+                document.getElementById('description').value = JSON.stringify(baseJSON, null, 2);
+            }
+        }
+    };
+    client.send(productoJsonString);
+}
+
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
 function getXMLHttpRequest() {
     var objetoAjax;
@@ -143,6 +250,6 @@ function init() {
      * Convierte el JSON a string para poder mostrarlo
      * ver: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
      */
-    var JsonString = JSON.stringify(baseJSON,null, 2);
+    var JsonString = JSON.stringify(baseJSON, null, 2);
     document.getElementById("description").value = JsonString;
 }
