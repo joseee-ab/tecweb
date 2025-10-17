@@ -22,25 +22,29 @@
             die('Query Error: '.mysqli_error($conexion));
         }
 		$conexion->close();
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        exit;
     }
-    if(isset($_POST['nombre'])){
-        $nombre = $_POST['nombre'];
-        if ( $result = $conexion->query("SELECT * FROM productos WHERE nombre = LIKE 'nombre%'") ) {
-            // SE OBTIENEN LOS RESULTADOS
-			$row = $result->fetch_array(MYSQLI_ASSOC);
 
-            if(!is_null($row)) {
-                // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
-                foreach($row as $key => $value) {
-                    $data[$key] = utf8_encode($value);
+    if (isset($_POST['nombre'])) {
+        $nombre = $conexion->real_escape_string($_POST['nombre']);
+        $query = "SELECT * FROM productos WHERE nombre LIKE '{$nombre}%'";
+        $data = [];
+        if ($result = $conexion->query($query)) {
+            while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $producto = [];
+                foreach ($row as $key => $value) {
+                    $producto[$key] = utf8_encode($value);
                 }
+                $data[] = $producto;
             }
-			$result->free();
-		} else {
-            die('Query Error: '.mysqli_error($conexion));
+            $result->free();
+        } else {
+            die('Query Error: ' . mysqli_error($conexion));
         }
-		$conexion->close();
-
+        $conexion->close();
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        exit;
     }
     
     // SE HACE LA CONVERSIÓN DE ARRAY A JSON

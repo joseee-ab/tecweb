@@ -60,6 +60,58 @@ function buscarID(e) {
     client.send("id="+id);
 }
 
+function buscarNombre(e) {
+    e.preventDefault();
+
+    // OBTENER el nombre desde el input
+    var nombre = document.getElementById('search').value.trim();
+
+    if (nombre === "") {
+        alert("Por favor ingresa un nombre para buscar.");
+        return;
+    }
+
+    // CREAR la conexión AJAX
+    var client = getXMLHttpRequest();
+    client.open('POST', './backend/read.php', true);
+    client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    client.onreadystatechange = function () {
+        if (client.readyState == 4 && client.status == 200) {
+            console.log('[CLIENTE]\n' + client.responseText);
+
+            // PARSEAR JSON
+            let productos = JSON.parse(client.responseText);
+
+            // Limpiar tabla
+            document.getElementById("productos").innerHTML = "";
+
+            // Si hay productos
+            if (productos.length > 0) {
+                let template = "";
+                productos.forEach(prod => {
+                    let descripcion = `
+                        <li>precio: ${prod.precio}</li>
+                        <li>unidades: ${prod.unidades}</li>
+                        <li>modelo: ${prod.modelo}</li>
+                        <li>marca: ${prod.marca}</li>
+                        <li>detalles: ${prod.detalles}</li>
+                    `;
+                    template += `
+                        <tr>
+                            <td>${prod.id}</td>
+                            <td>${prod.nombre}</td>
+                            <td><ul>${descripcion}</ul></td>
+                        </tr>
+                    `;
+                });
+                document.getElementById("productos").innerHTML = template;
+            }
+        }
+    };
+    // Enviar parámetro correctamente codificado
+    client.send("nombre=" + encodeURIComponent(nombre));
+}
+
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
 function agregarProducto(e) {
     e.preventDefault();
@@ -117,6 +169,6 @@ function init() {
      * Convierte el JSON a string para poder mostrarlo
      * ver: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
      */
-    var JsonString = JSON.stringify(baseJSON,null,2);
+    var JsonString = JSON.stringify(baseJSON,null, 2);
     document.getElementById("description").value = JsonString;
 }

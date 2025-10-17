@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 <?php
     /** Crear conexión **/
-    @$link = new mysqli('localhost', 'root', '', 'marketzone');
+    @$link = new mysqli('localhost', 'root', 'joseeeab', 'marketzone');
     if ($link->connect_errno) {
         die('Falló la conexión: '.$link->connect_error.'<br/>');
     }

@@ -1,7 +1,7 @@
 
     <?php
     /** SE CREA EL OBJETO DE CONEXION */
-    @$link = new mysqli('localhost', 'root', '' , 'marketzone');	
+    @$link = new mysqli('localhost', 'root', 'joseeeab' , 'marketzone');	
 
     /** comprobar la conexión */
     if ($link->connect_errno) 

@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost", "root", "", "marketzone");
+$link = mysqli_connect("localhost", "root", "joseeeab", "marketzone");
 
 if($link === false){
     die("ERROR: No se pudo conectar a la DB. " . mysqli_connect_error());

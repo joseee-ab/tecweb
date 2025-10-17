@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 <?php
-    @$link = new mysqli('localhost', 'root', '', 'marketzone');
+    @$link = new mysqli('localhost', 'root', 'joseeeab', 'marketzone');
 
     if ($link->connect_errno) {
         die('Falló la conexión: '.$link->connect_error.'<br/>');
